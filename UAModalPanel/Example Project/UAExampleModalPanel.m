@@ -14,6 +14,15 @@
 
 @synthesize viewLoadedFromXib;
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    return [self initWithCoder:coder];
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    return [self initWithFrame:frame title:@""];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title {
 	if ((self = [super initWithFrame:frame])) {
 		
@@ -131,16 +140,7 @@
 #pragma mark - Actions
 - (IBAction)buttonPressed:(id)sender {
 	// The button was pressed. Lets do something with it.
-	
-	// Maybe the delegate wants something to do with it...
-	if ([delegate respondsToSelector:@selector(superAwesomeButtonPressed:)]) {
-		[delegate performSelector:@selector(superAwesomeButtonPressed:) withObject:sender];
-	
-	// Or perhaps someone is listening for notifications 
-	} else {
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"SuperAwesomeButtonPressed" object:sender];
-	}
-		
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"SuperAwesomeButtonPressed" object:sender];
 	NSLog(@"Super Awesome Button pressed!");
 }
 
