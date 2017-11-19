@@ -39,7 +39,13 @@
 	return [self initWithFrame:frame style:UAGradientBackgroundStyleLinear];
 }
 
-
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [self initWithCoder:aDecoder];
+    if (self) {
+        
+    }
+    return self;
+}
 
 + (id)gradientWithFrame:(CGRect)frame style:(UAGradientBackgroundStyle)aStyle color:(CGFloat *)components lineMode:(UAGradientLineMode)lineModes {
 	return [[UAGradientBackground alloc] initWithFrame:frame style:aStyle color:components lineMode:lineModes];
